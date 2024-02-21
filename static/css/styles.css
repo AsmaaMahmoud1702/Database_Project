@@ -4,6 +4,18 @@
   opacity: 0.9;
 }
 
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.navbar-brand img {
+  width: 25px;
+  margin-right: 10px;
+}
+
 .dropdown-menu-right {
   right: 0 !important;
   left: auto !important;
