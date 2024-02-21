@@ -92,7 +92,7 @@
 
 .recipe_img {
   /* width: 252px;
-  max-height: 245px;
+  max-height: 245px; 
   height: -webkit-fill-available; */
   border-radius: 14%;
   object-fit: cover;
