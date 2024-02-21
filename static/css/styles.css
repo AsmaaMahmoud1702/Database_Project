@@ -98,14 +98,9 @@
 .recipe_div:hover {
   cursor: pointer;
   transform: scale(1.2);
-  /* border: 1px solid lightgray;
-  border-radius: 14%; */
 }
 
 .recipe_img {
-  /* width: 252px;
-  max-height: 245px; 
-  height: -webkit-fill-available; */
   border-radius: 14%;
   object-fit: cover;
   margin-bottom: 10px;
