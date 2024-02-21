@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block content %}{% block header %}{% include
+'header.html' %}{% endblock %}
+<div id="popular_recipes" class="popular-recipes">
+  <div class="categories_container">
+    {% for category in categories %}
+    <a href="/category/{{ category.categoryName }}">
+      <div class="category_div">
+        <h4>{{category.categoryName}}</h4>
+        <img class="category_img" src="{{ url_for('static', filename=category.categoryImg) }}" alt="{{category.categoryName}}">
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

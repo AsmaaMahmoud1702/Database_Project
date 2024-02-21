@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block content %}{% block header %}{% include
+'header.html' %}{% endblock %}
+<div id="recipe_container" class="recipe_container">
+  <div class="recipe_item_header">
+    <h2>{{recipe.recipeName}}</h2>
+    <p>{{recipe.recipeDescription}}</p>
+    <div>
+      <img
+        src="{{ url_for('static', filename=recipe.recipeImg) }}"
+        alt="Recipe Picture"
+      />
+    </div>
+  </div>
+  <hr />
+  <div class="ingredient_div">
+    <h3>Ingredients</h3>
+    {% for ingredient in ingredients %}
+    <ol>
+      <li>
+        {{ingredient.quanitiy}} {{ingredient.ingredientName}}
+        {{ingredient.ingredientDescription}}
+      </li>
+    </ol>
+    {% endfor %}
+  </div>
+  <hr />
+  <div class="steps_div">
+    <h3>Cooking Steps</h3>
+    {% for step in cookSteps %}
+    <ul>
+      <h4>Step {{step.stepNumber}}</h4>
+      <p>{{step.stepDescription}}</p>
+    </ul>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

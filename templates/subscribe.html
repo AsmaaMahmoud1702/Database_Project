@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block content %}
+<div id="subscribe_container" class="container">
+  <section class="text-center subscribe_section">
+    <h1>Subscribe</h1>
+    <div class="subscribe_container">
+      <strong>Join Us Now</strong>
+      <h6>Sign up for new recipes!</h6>
+      <br />
+      <form class="subscribe_form" action="/subscribe" method="post">
+        <div class="input-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="email_form input-lg"
+            placeholder="Enter your email address"
+            required
+          />
+          <span class="input_form_btn">
+            <button class="btn" type="submit">Subscribe</button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+{% endblock %}

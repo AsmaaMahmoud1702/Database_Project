@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}{% block header %}{% include
+    'header.html' %}{% endblock %}
+    <div id="popular_recipes" class="popular-recipes">
+      <div class="recipes_container">
+        {% for recipe in categoryRecipes %}
+        <a href="/recipe/{{ recipe.recipeId }}">
+          <div class="recipe_div">
+            <p class="recipe_name">{{recipe.recipeName}}</p>
+    
+            <img
+              src="{{ url_for('static', filename=recipe.recipeImg) }}"
+              alt="Recipe Picture"
+              class="recipe_img"
+            />
+            <div class="ratings_container">
+              <div class="ratings_div">
+                <div>
+                  {% set rating = recipe.avgRate %} {% for _ in range(rating|int) %}
+                  ★ {% endfor %} {% if rating|float - rating|int == 0.5 %} ½ {%
+                  endif %} {% for _ in range(5 - (rating|int + (1 if rating|float -
+                  rating|int == 0.5 else 0))) %} ☆ {% endfor %}
+                </div>
+    
+                <p>{{recipe.ratingsNumber}}</p>
+              </div>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+{% endblock %}
+    

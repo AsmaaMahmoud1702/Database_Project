@@ -1,0 +1,98 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+
+    <div id="popular_recipes" class="popular-recipes">
+      <h2>Out Most Popular Recipess</h2>
+      <div class="recipes_container">
+        {% for recipe in recipes %}
+        <button>sds</button>
+        <a href="/recipe/{{ recipe.recipeId }}">
+          <div class="recipe_div">
+            {{recipe.recipeName}}
+            <img
+              src="{{ url_for('static', filename=recipe.recipeImg) }}"
+              alt="Recipe Picture"
+              class="recipe_img"
+            />
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-btns">
+        <a href="#">Egyption Resturant</a>
+        <div>
+          <a href="#">Subscribe!</a>
+          <a href="#"> All Recipes </a>
+        </div>
+      </div>
+      <div class="social-btns">
+        <a href="#"><i class="icon ion-social-instagram"></i></a
+        ><a href="#"><i class="icon ion-social-snapchat"></i></a
+        ><a href="#"><i class="icon ion-social-twitter"></i></a
+        ><a href="#"><i class="icon ion-social-facebook"></i></a>
+      </div>
+    </footer>
+  </body>
+</html> -->
+
+{% extends "base.html" %} {% block content %}{% block header %}{% include
+'header.html' %}{% endblock %}
+<div id="popular_recipes" class="popular-recipes">
+  <h2>Our Most Popular Recipes</h2>
+  <div class="recipes_container">
+    {% for recipe in popular_recipes %}
+    <a href="/recipe/{{ recipe.recipeId }}">
+      <div class="recipe_div">
+        <p class="recipe_name">{{recipe.recipeName}}</p>
+
+        <img
+          src="{{ url_for('static', filename=recipe.recipeImg) }}"
+          alt="Recipe Picture"
+          class="recipe_img"
+        />
+        <div class="ratings_container">
+          <div class="ratings_div">
+            <div>
+              {% set rating = recipe.avgRate %} {% for _ in range(rating|int) %}
+              ★ {% endfor %} {% if rating|float - rating|int == 0.5 %} ½ {%
+              endif %} {% for _ in range(5 - (rating|int + (1 if rating|float -
+              rating|int == 0.5 else 0))) %} ☆ {% endfor %}
+            </div>
+
+            <p>{{recipe.ratingsNumber}}</p>
+          </div>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
